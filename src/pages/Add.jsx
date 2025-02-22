@@ -13,6 +13,7 @@ const Add = ({token}) => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [sales, setSales] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("Men");
   const [subCategory, setSubCategory] = useState("Topwear");
@@ -27,6 +28,7 @@ const Add = ({token}) => {
 
       formData.append("name", name)
       formData.append("description", description)
+      formData.append("sales", sales)
       formData.append("price", price)
       formData.append("category", category)
       formData.append("subCategory", subCategory)
@@ -51,6 +53,8 @@ const Add = ({token}) => {
         setImage3(false)
         setImage4(false)
         setPrice('')
+        setSales('')
+        setSizes([])
       } else{
         toast.error(response.data.message)
       }
@@ -119,6 +123,11 @@ const Add = ({token}) => {
         <div>
           <p className='mb-2'>Product Price</p>
           <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='25' />
+        </div>
+
+        <div>
+          <p className='mb-2'>Sales %</p>
+          <input onChange={(e) => setSales(e.target.value)} value={sales} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='5' />
         </div>
 
       </div>
